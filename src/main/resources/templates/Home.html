@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Corona Virus Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<section id="total"  >
+    <div class="containers" style="padding: 5% 3% 1% 7%; color:Red">
+<h1 >COVID19 Tracker </h1>
+<p>This application lists current number of Covid cases reported across the globe.</p>
+
+    <div class="jumbotron">
+        <h1 class="display-4" th:text="${totalCases}">COVID19 Tracker </h1>
+        <p class="lead">Total cases reported today in the globe</p>
+        <hr class="my-4">
+        <p >
+            <span>New cases reported since yesterday</span>
+            <span th:text="${totalNewCases}"></span>
+        </p>
+
+    </div>
+    </div>
+</section>
+<section id="CovidTable">
+    <div class="container">
+
+
+<table class="table table-hover" >
+    <thead>
+    <tr>
+    <th>State</th>
+    <th>Country</th>
+    <th>Total Cases reported</th>
+        <th> Changes from last date [fresh Cases]</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr th:each="data: ${Data}">
+        <td th:text="${data.state}">-</td>
+        <td th:text="${data.country}"> -</td>
+        <td th:text="${data.totalCases}">0</td>
+        <td th:text="${data.DifferenceFromPreviousDay}"></td>
+    </tr>
+
+    </tbody>
+</table>
+    </div>
+</section>
+</body>
+</html>
